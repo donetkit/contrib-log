@@ -16,9 +16,12 @@ type DefaultLogger struct {
 }
 
 func NewDefaultLogger(opts ...Option) ILogger {
+	hostName, _ := os.Hostname()
 	cfg := &Config{
 		logLevel: DEBUG,
 		log2File: false,
+		hostName: hostName,
+		ip:       getHostIp(),
 	}
 	for _, opt := range opts {
 		opt(cfg)

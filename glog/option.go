@@ -1,5 +1,21 @@
 package glog
 
+import (
+	"net"
+	"strings"
+)
+
+// GetHostIp ip
+func getHostIp() string {
+	conn, err := net.Dial("udp", "8.8.8.8:53")
+	if err == nil {
+		localAddr := conn.LocalAddr().(*net.UDPAddr)
+		ip := strings.Split(localAddr.String(), ":")[0]
+		return ip
+	}
+	return ""
+}
+
 // Option for queue system
 type Option func(*Config)
 
