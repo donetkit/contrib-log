@@ -71,6 +71,10 @@ func (log *ZapLogger) SetClass(className string) {
 	log.class = className
 }
 
+func (log *ZapLogger) SetLogLevel(level LogLevel) {
+	log.config.logLevel = level
+}
+
 func (log *ZapLogger) SetCustomLogFormat(logFormatterFunc func(logInfo interface{}, color bool) string) {
 	log.logFormatter = logFormatterFunc
 }
@@ -102,17 +106,29 @@ func (log *ZapLogger) log(level LogLevel, format string, a ...interface{}) {
 }
 
 func (log *ZapLogger) Debug(format string, a ...interface{}) {
+	if DEBUG < log.config.logLevel {
+		return
+	}
 	log.log(DEBUG, format, a...)
 }
 
 func (log *ZapLogger) Info(format string, a ...interface{}) {
+	if INFO < log.config.logLevel {
+		return
+	}
 	log.log(INFO, format, a...)
 }
 
 func (log *ZapLogger) Warning(format string, a ...interface{}) {
+	if WARNING < log.config.logLevel {
+		return
+	}
 	log.log(WARNING, format, a...)
 }
 
 func (log *ZapLogger) Error(format string, a ...interface{}) {
+	if ERROR < log.config.logLevel {
+		return
+	}
 	log.log(ERROR, format, a...)
 }

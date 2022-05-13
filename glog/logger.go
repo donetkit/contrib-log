@@ -7,14 +7,15 @@ import (
 
 type ILogger interface {
 	SetClass(className string)
+	SetLogLevel(level LogLevel)
 	Debug(format string, a ...interface{})
 	Info(format string, a ...interface{})
 	Warning(format string, a ...interface{})
 	Error(format string, a ...interface{})
-
 	SetCustomLogFormat(logFormatterFunc func(logInfo interface{}, color bool) string)
 	SetDateFormat(format string)
 }
+
 
 type Config struct {
 	log2File bool
@@ -34,7 +35,7 @@ type LogInfo struct {
 	Extend    map[string]interface{}
 }
 
-var defaultDateFormat = "2006/01/02 15:04:05.00.000"
+var defaultDateFormat = "2006/01/02 15:04:05.000"
 
 type LogLevel int
 
