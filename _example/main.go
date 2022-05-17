@@ -1,7 +1,3 @@
-# contrib-log
-
-```contrib-log demo
- 
 package main
 
 import (
@@ -17,7 +13,7 @@ func main() {
 	// enable/disable file/function name
 	l.SetReportCaller(false)
 
-	l.Infof("this is %v demo", "TestLogs")
+	l.Infof("this is %v _example", "TestLogs")
 
 	lWebServer := l.WithField("component", "web-server")
 	lWebServer.Info("starting...")
@@ -33,9 +29,6 @@ func main() {
 	lDbConnector := l.WithField("category", "db-connector")
 	lDbConnector.Info("connecting to db on 10.10.10.13...")
 	lDbConnector.Warn("connection took 10s")
-	l.Infof("this is %v demo", "TestLogs")
-	l.Info("demo end.")
+	l.Infof("this is %v _example", "TestLogs")
+	l.Info("_example end.")
 }
-
-
-```

@@ -1,4 +1,4 @@
-module github.com/donetkit/gin-contrib-log
+module github.com/donetkit/contrib-log
 
 go 1.18
 
