@@ -7,13 +7,17 @@ import (
 
 var log glog.ILogger
 
+type Person struct {
+	name string
+	age  int
+	sex  string
+}
+
 func main() {
-	l := glog.New(glog.WithDisplayFields(true), glog.WithHostName(""))
+	l := glog.New(glog.WithDisplayFields(false))
 	l.SetLevel(glog.DebugLevel)
 	// enable/disable file/function name
 	l.SetReportCaller(false)
-
-	l.Infof("this is %v _example", "TestLogs")
 
 	lWebServer := l.WithField("component", "web-server")
 	lWebServer.Info("starting...")
@@ -29,6 +33,5 @@ func main() {
 	lDbConnector := l.WithField("category", "db-connector")
 	lDbConnector.Info("connecting to db on 10.10.10.13...")
 	lDbConnector.Warn("connection took 10s")
-	l.Infof("this is %v _example", "TestLogs")
-	l.Info("_example end.")
+
 }

@@ -108,12 +108,6 @@ func (f *Formatter) Format(entry *logrus.Entry) ([]byte, error) {
 	if !f.NoColors && !f.NoFieldsColors {
 		b.WriteString("\x1b[0m")
 	}
-	if strings.HasPrefix(entry.Message, "[[") {
-		entry.Message = entry.Message[2:]
-	}
-	if strings.HasSuffix(entry.Message, "]]") {
-		entry.Message = entry.Message[:len(entry.Message)-2]
-	}
 	// write message
 	if f.TrimMessages {
 		b.WriteString(strings.TrimSpace(entry.Message))
