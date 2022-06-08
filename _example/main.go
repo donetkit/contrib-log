@@ -14,6 +14,9 @@ type Person struct {
 }
 
 func main() {
+
+	new(logrus.Entry).Info()
+	
 	l := glog.New(glog.WithDisplayFields(false))
 	l.SetLevel(glog.DebugLevel)
 	// enable/disable file/function name
