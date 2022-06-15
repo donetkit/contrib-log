@@ -127,7 +127,7 @@ func (f *Formatter) Format(entry *logrus.Entry) ([]byte, error) {
 func (f *Formatter) writeCaller(b *bytes.Buffer, entry *logrus.Entry) {
 	if entry.HasCaller() {
 		if f.CustomCallerFormatter != nil {
-			fmt.Fprintf(b, f.CustomCallerFormatter(entry.Caller))
+			fmt.Fprintf(b, " [%s:%d]", f.CustomCallerFormatter(entry.Caller), entry.Caller.Line)
 		} else {
 			fmt.Fprintf(
 				b,
@@ -212,4 +212,33 @@ func getColorByLevel(level logrus.Level) int {
 	default:
 		return colorBlue
 	}
+}
+
+func (f *Formatter) Format2(entry *logrus.Entry) ([]byte, error) {
+
+	var b *bytes.Buffer
+
+	if entry.Buffer != nil {
+
+		b = entry.Buffer
+
+	} else {
+
+		b = &bytes.Buffer{}
+
+	}
+	level := getColorByLevel(entry.Level)
+
+	strList := strings.Split(entry.Caller.File, "/")
+
+	fileName := strList[len(strList)-1]
+
+	b.WriteString(fmt.Sprintf("%s - %s - [line:%d] - %s - %s\n",
+
+		entry.Time.Format("2006-01-02 15:04:05,678"), fileName,
+
+		entry.Caller.Line, level, entry.Message))
+
+	return b.Bytes(), nil
+
 }

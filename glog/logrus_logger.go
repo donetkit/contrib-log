@@ -3,6 +3,8 @@ package glog
 import (
 	"github.com/sirupsen/logrus"
 	"os"
+	"path"
+	"runtime"
 	"sync/atomic"
 )
 
@@ -76,8 +78,9 @@ func New(opts ...Option) ILogger {
 	}
 
 	logger := logrus.New()
+	logger.SetReportCaller(true)
 	logger.SetLevel(logrus.Level(cfg.level))
-
+	//logger.AddHook(NewContextHook(logrus.Level(cfg.level)))
 	if cfg.log2File {
 		cfg.noColors = true
 		cfg.noFieldsColors = true
@@ -97,6 +100,9 @@ func New(opts ...Option) ILogger {
 		TimestampFormat: defaultDateFormat,
 		HideKeys:        true,
 		CallerFirst:     true,
+		CustomCallerFormatter: func(frame *runtime.Frame) string {
+			return path.Base(frame.File)
+		},
 	})
 	return &Logger{logger: logger, config: cfg}
 }

@@ -7,21 +7,11 @@ import (
 
 var log glog.ILogger
 
-type Person struct {
-	name string
-	age  int
-	sex  string
-}
-
 func main() {
-
-	new(logrus.Entry).Info()
-	
 	l := glog.New(glog.WithDisplayFields(false))
 	l.SetLevel(glog.DebugLevel)
 	// enable/disable file/function name
-	l.SetReportCaller(false)
-
+	//l.SetReportCaller(false)
 	lWebServer := l.WithField("component", "web-server")
 	lWebServer.Info("starting...")
 
