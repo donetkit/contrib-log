@@ -27,4 +27,88 @@ func main() {
 	lDbConnector.Info("connecting to db on 10.10.10.13...")
 	lDbConnector.Warn("connection took 10s")
 
+	/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 */
+
+	lWebServerReq.Info("params: startYear=2048")
+	lWebServerReq.Error("response: 400 Bad Request")
+
+	lDbConnector.Info("connecting to db on 10.10.10.13...")
+	lDbConnector.Warn("connection took 10s")
+
+	lWebServerReq.Info("params: startYear=2048")
+	lWebServerReq.Error("response: 400 Bad Request")
+
+	lDbConnector.Info("connecting to db on 10.10.10.13...")
+	lDbConnector.Warn("connection took 10s")
+
+	lWebServerReq.Info("params: startYear=2048")
+	lWebServerReq.Error("response: 400 Bad Request")
+
+	lDbConnector.Info("connecting to db on 10.10.10.13...")
+	lDbConnector.Warn("connection took 10s")
+
+	lWebServerReq.Info("params: startYear=2048")
+	lWebServerReq.Error("response: 400 Bad Request")
+
+	lDbConnector.Info("connecting to db on 10.10.10.13...")
+	lDbConnector.Warn("connection took 10s")
+
+	lWebServerReq.Info("params: startYear=2048")
+	lWebServerReq.Error("response: 400 Bad Request")
+
+	lDbConnector.Info("connecting to db on 10.10.10.13...")
+	lDbConnector.Warn("connection took 10s")
+
 }
