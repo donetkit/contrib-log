@@ -78,7 +78,7 @@ func New(opts ...Option) ILogger {
 	}
 
 	logger := logrus.New()
-	logger.SetReportCaller(true)
+	logger.SetReportCaller(cfg.reportCaller)
 	logger.SetLevel(logrus.Level(cfg.level))
 	//logger.AddHook(NewContextHook(logrus.Level(cfg.level)))
 	if cfg.log2File {

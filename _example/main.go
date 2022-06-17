@@ -8,7 +8,7 @@ import (
 var log glog.ILogger
 
 func main() {
-	l := glog.New(glog.WithDisplayFields(false))
+	l := glog.New(glog.WithDisplayFields(false), glog.WithReportCaller(true))
 	l.SetLevel(glog.DebugLevel)
 	// enable/disable file/function name
 	//l.SetReportCaller(false)
